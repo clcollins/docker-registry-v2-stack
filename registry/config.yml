@@ -1,0 +1,34 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+    cache:
+        blobdescriptor: redis
+    filesystem:
+        rootdirectory: /var/lib/registry
+http:
+    addr: localhost:5000
+    secret: YourPrincessIsInAnotherCastle
+    headers:
+        X-Content-Type-Options: [nosniff]
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+auth:
+  silly:
+    realm: silly-realm
+    service: silly-service
+redis:
+  addr: _env:REDIS_PORT_6397_TCP_ADDR:_env:REDIS_PORT_6397_TCP_PORT
+  db: 0
+  dialtimeout: 10ms
+  readtimeout: 10ms
+  writetimeout: 10ms
+  pool:
+    maxidle: 16
+    maxactive: 64
+    idletimeout: 300s
+    

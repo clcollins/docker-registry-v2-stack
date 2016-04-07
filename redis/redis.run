@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr/bin/redis-server
+trap "/usr/bin/redis-shutdown" SIGTERM SIGKILL SIGINT
