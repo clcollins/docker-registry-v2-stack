@@ -31,9 +31,9 @@ After building the Docker images, run the stack:
 	   -e SITENAME=<URL OF YOUR REGISTRY> \
 	   -d registry-web
  
-_Special Notes For Apache:_ 
+## Special Notes For Apache ##
 
-### SSL ###
+_SSL_
 
 SSL is on by default, but you need to supply your own SSL certificates.  The `<LOCAL CONFIG DIR>` for the registry-web container should contain the ssl certs and keys, named like so:
 
@@ -42,6 +42,6 @@ SSL is on by default, but you need to supply your own SSL certificates.  The `<L
 3. (Optional) CA Intermediate Certificate: `ca-cert.crt`
 
 
-### Kerberos ###
+_Kerberos_
 
 Kerberos and mod_auth_kerb are installed, but you'll need to edit the vhost.conf and krb5.conf files with your own Kerberos information.  Alternatively, you can comment out the Kerberos stuff from the vhost.conf file and uncomment the basic authentication stuff, and use that.
