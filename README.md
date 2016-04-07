@@ -14,22 +14,22 @@ _Note:_ The Docker Registry image in this stack is entirely identical to the ups
 After building the Docker images, run the stack:
 
     docker run --name registry-redis \
-           --restart always \
-	   -d registry-redis
+               --restart always \
+               -d registry-redis
     
     docker run --name registry \
-           --restart always \
-           --link registry-redis:redis \
-	   -v <LOCAL STORAGE VOLUME>:/var/lib/registry \
-           -d registry-v2
+               --restart always \
+               --link registry-redis:redis \
+               -v <LOCAL STORAGE VOLUME>:/var/lib/registry \
+               -d registry-v2
 
-    docker --name registry-web \
-           --restart always \
-           --link registry:registry \
-	   -v <LOCAL CONFIG DIR>:/conf \
-	   -p 443:443 \
-	   -e SITENAME=<URL OF YOUR REGISTRY> \
-	   -d registry-web
+    docker run --name registry-web \
+               --restart always \
+               --link registry:registry \
+               -v <LOCAL CONFIG DIR>:/conf \
+               -p 443:443 \
+               -e SITENAME=<URL OF YOUR REGISTRY> \
+               -d registry-web
  
 ## Special Notes For Apache ##
 
