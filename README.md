@@ -1,7 +1,7 @@
 Registry-V2
 ===========
 
-_v1.0 - 2016-04-07_
+_v1.1 - 2016-04-08_
 
 A docker registry stack using the [Docker Distribution registry v2](https://github.com/docker/distribution/tree/master/registry), Apache with mod_auth_kerb for authentication, and a Redis cache for metadata objects.
 
@@ -30,7 +30,7 @@ After building the Docker images, run the stack:
                -p 443:443 \
                -e SITENAME=<URL OF YOUR REGISTRY> \
                -d registry-web
- 
+  
 ## Special Notes For Apache ##
 
 _SSL_
@@ -45,3 +45,9 @@ SSL is on by default, but you need to supply your own SSL certificates.  The `<L
 _Kerberos_
 
 Kerberos and mod_auth_kerb are installed, but you'll need to edit the vhost.conf and krb5.conf files with your own Kerberos information.  Alternatively, you can comment out the Kerberos stuff from the vhost.conf file and uncomment the basic authentication stuff, and use that.
+
+## Changelog ##
+
+_v1.1 - 2016-04-08_
+
+Changed config.yml to use `addr: 0.0.0.0:5000` instead of `addr: localhost:5000` for the http section, to fix 503 errors from registry.  Should allow for linking correctly \(no variables required\) without any security issues as long as port 5000 is never mapped by the registry container.
